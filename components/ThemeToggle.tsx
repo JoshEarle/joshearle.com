@@ -35,7 +35,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="fixed top-6 right-6 md:top-12 md:right-12 z-10"
+      className="relative z-10"
       aria-label="Toggle theme"
     >
       <div className="relative w-16 h-8 bg-gray-800 rounded-full p-1">
