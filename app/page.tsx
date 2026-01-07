@@ -33,7 +33,7 @@ export default function Home() {
               outlit
             </a>.
             <br />
-            Understand how customers find you, use your product, and convert to paid.
+            understand how customers find you, use your product, and convert to paid.
           </p>
         </section>
 
@@ -43,11 +43,19 @@ export default function Home() {
           <p className="text-regular mb-6 leading-relaxed">
             canadian living in san francisco.
             <br /><br />
-            previously built design systems for boring enterprise software.
+            previously a product designer building design systems for boring enterprise software.
             <br /><br />
-            interested in AI, fusion energy, agritech, and fantasy football.
+            interested in AI, nuclear energy, agritech, and fantasy football.
             <br /><br />
-            i write about things i find interesting and build projects, like the hardest naruto trivia quiz on the internet.
+            i write about things i find interesting and build things like{" "}
+            <a 
+              href="https://www.hardestnarutoquiz.com" 
+              className="underline hover:text-gray-900 dark:hover:text-white transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              the hardest naruto trivia quiz on the internet
+            </a>.
             <br /><br />
             usually working out of coffee shops around the mission and north beach.
           </p>

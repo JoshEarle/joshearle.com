@@ -104,3 +104,4 @@ If you uploaded a file called `sunset.jpg`:
 - **Format**: Use JPG, PNG, or WebP files
 - **Naming**: Use lowercase, no spaces (use dashes: `my-photo.jpg`)
 
+
