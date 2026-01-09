@@ -37,6 +37,12 @@ const pics = [
     imageUrl: "/images/L1000419.jpg",
     date: "FEB 20, 25",
   },
+  {
+    id: 4,
+    title: "conquering waterfalls in ecuador",
+    imageUrl: "/images/Waterfall.jpg",
+    date: "JAN 2, 26",
+  },
   // TO ADD MORE PHOTOS:
   // Step 1: Save your image file to: public/images/your-photo.jpg
   // Step 2: Copy the format below and paste it above, then fill in your details:

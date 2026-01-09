@@ -1,7 +1,6 @@
 import ThemeToggle from "@/components/ThemeToggle";
 import NowPlaying from "@/components/NowPlaying";
 import Navbar from "@/components/Navbar";
-import Link from "next/link";
 
 export default function Home() {
   return (
@@ -59,31 +58,6 @@ export default function Home() {
             <br /><br />
             usually working out of coffee shops around the mission and north beach.
           </p>
-        </section>
-
-        {/* Writings Section */}
-        <section>
-          <div className="flex items-baseline justify-between mb-6">
-            <h2 className="text-medium">writings</h2>
-            <Link 
-              href="/writings" 
-              className="text-small text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-            >
-              (view all)
-            </Link>
-          </div>
-          <div className="space-y-6">
-            <article className="flex items-center justify-between pb-4">
-              <Link 
-                href="/writings/hello-world" 
-                className="text-regular hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer"
-              >
-                hello, world!
-              </Link>
-              <div className="flex-1 border-b border-dotted border-gray-300 dark:border-gray-700 mx-4"></div>
-              <span className="text-small text-gray-600 dark:text-gray-500 whitespace-nowrap">NOV 30, 25</span>
-            </article>
-          </div>
         </section>
 
         {/* Social Links */}
