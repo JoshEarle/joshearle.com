@@ -8,7 +8,7 @@ export default function Home() {
       <div className="max-w-3xl mx-auto">
         {/* Header: Name, Navbar, Theme Toggle */}
         <div className="flex items-center justify-between mb-16 relative">
-          <h1 className="text-medium">late night at golden gate</h1>
+          <h1 className="text-medium">josh earle</h1>
           <Navbar />
           <div className="w-16">
             <ThemeToggle />
