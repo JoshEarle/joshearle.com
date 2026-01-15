@@ -57,7 +57,7 @@ const pics = [
 export default function PicsPage() {
   return (
     <main className="min-h-screen px-6 py-16 md:px-12 md:py-24 relative">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         {/* Header: Name, Navbar, Theme Toggle */}
         <div className="flex items-center justify-between mb-16 relative">
           <h1 className="text-medium">josh earle</h1>
@@ -73,7 +73,7 @@ export default function PicsPage() {
         </div>
 
         {/* Collage Grid - Masonry Layout */}
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6">
+        <div className="columns-1 md:columns-2 gap-6">
           {pics.map((pic) => (
             <article 
               key={pic.id} 
