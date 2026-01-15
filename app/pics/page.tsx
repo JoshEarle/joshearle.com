@@ -21,7 +21,7 @@ import Link from "next/link";
 const pics = [
   {
     id: 1,
-    title: "late night grind at golden gate",
+    title: "late night at golden gate",
     imageUrl: "/images/IMG_5379.jpg",
     date: "DEC 15, 25",
   },
