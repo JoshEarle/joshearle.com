@@ -13,7 +13,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="absolute left-1/2 -translate-x-1/2 flex gap-6">
+    <nav className="flex flex-1 justify-center gap-6">
       {navItems.map((item) => (
         <Link
           key={item.href}
