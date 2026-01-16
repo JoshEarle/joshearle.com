@@ -27,7 +27,7 @@ export default function WritingsPage() {
         </div>
       </div>
       
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         {/* Page Title */}
         <div className="mb-16">
           <h2 className="text-medium mb-2">writings</h2>
@@ -55,7 +55,7 @@ export default function WritingsPage() {
             ))}
           </div>
         ) : (
-          <div className="text-center py-16">
+          <div className="py-16">
             <p className="text-regular text-gray-600 dark:text-gray-400">
               coming soon
             </p>
