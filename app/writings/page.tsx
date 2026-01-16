@@ -55,7 +55,7 @@ export default function WritingsPage() {
             ))}
           </div>
         ) : (
-          <div className="py-16">
+          <div className="text-center py-16">
             <p className="text-regular text-gray-600 dark:text-gray-400">
               coming soon
             </p>
