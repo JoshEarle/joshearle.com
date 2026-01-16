@@ -6,18 +6,18 @@ export default function ThemeToggle() {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   useEffect(() => {
-    // Check localStorage for saved theme preference
+    // Read from localStorage and sync component state with DOM
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      if (savedTheme === "dark") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    } else {
-      // Default to dark mode
+    const currentTheme = savedTheme || "dark";
+    
+    // Sync component state with what's in localStorage
+    setTheme(currentTheme);
+    
+    // Ensure DOM matches (should already be set by script, but double-check)
+    if (currentTheme === "dark") {
       document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
     }
   }, []);
 
