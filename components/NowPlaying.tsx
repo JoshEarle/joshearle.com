@@ -84,10 +84,12 @@ function useAlbumColors(imageUrl?: string): [string | null, string | null] {
   return colors;
 }
 
-export default function NowPlaying() {
-  const [nowPlaying, setNowPlaying] = useState<NowPlayingData | null>(null);
-  const [lastPlayed, setLastPlayed] = useState<NowPlayingData | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+export default function NowPlaying({ initialData }: { initialData?: NowPlayingData }) {
+  const [nowPlaying, setNowPlaying] = useState<NowPlayingData | null>(initialData || null);
+  const [lastPlayed, setLastPlayed] = useState<NowPlayingData | null>(
+    initialData?.title ? initialData : null
+  );
+  const [isLoading, setIsLoading] = useState(!initialData);
   const [progress, setProgress] = useState(0);
   const fetchState = useRef({ time: 0, progressMs: 0 });
   const playbackRef = useRef({ isPlaying: false, durationMs: 0 });
@@ -110,6 +112,7 @@ export default function NowPlaying() {
 
       if (data.isPlaying && data.title) {
         setLastPlayed(data);
+        try { localStorage.setItem("lastPlayedTrack", JSON.stringify(data)); } catch {}
       }
 
       playbackRef.current = {
@@ -147,7 +150,7 @@ export default function NowPlaying() {
     };
   }, [fetchNowPlaying]);
 
-  if (isLoading || !track?.title) {
+  if (!track?.title) {
     return null;
   }
 
@@ -193,7 +196,7 @@ export default function NowPlaying() {
   );
 
   return (
-    <div className="mb-10 mt-4" style={{ animation: "slideUp 0.4s ease-out" }}>
+    <div className="mb-10 mt-4">
       <p className="text-regular text-muted mb-4 text-center">{label}</p>
       {track.songUrl ? (
         <a
