@@ -12,14 +12,14 @@ export default function Home() {
 
       <div className="max-w-4xl mx-auto">
         {/* Name */}
-        <div className="mb-10 flex items-baseline gap-1.5">
+        <div className="mb-6 md:mb-10 flex items-baseline gap-1.5">
           <h1 className="text-medium">josh earle</h1>
           <span className="text-regular">/</span>
           <p className="text-regular">co-founder, outlit</p>
         </div>
 
         {/* Currently Section */}
-        <section className="mb-10">
+        <section className="mb-6 md:mb-10">
           <h2 className="text-medium mb-3">currently</h2>
           <p className="text-regular leading-relaxed">
             building{" "}
@@ -37,7 +37,7 @@ export default function Home() {
         </section>
 
         {/* About Section */}
-        <section className="mb-10">
+        <section className="mb-6 md:mb-10">
           <h2 className="text-medium mb-3">about</h2>
           <p className="text-regular leading-relaxed">
             based in sf, originally from canada
@@ -66,7 +66,7 @@ export default function Home() {
         </section>
 
         {/* Now Playing + Social Links */}
-        <div className="mt-16">
+        <div className="mt-8 md:mt-16">
           <NowPlaying />
 
           <div className="mt-8 flex justify-center items-center gap-4 text-foreground">
