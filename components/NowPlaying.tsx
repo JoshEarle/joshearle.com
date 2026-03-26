@@ -197,7 +197,7 @@ export default function NowPlaying({ initialData }: { initialData?: NowPlayingDa
 
   return (
     <div className="mb-10 mt-4">
-      <p className="text-regular text-muted mb-4 text-center">{label}</p>
+      <p className="text-regular text-foreground mb-4 text-center">{label}</p>
       {track.songUrl ? (
         <a
           href={track.songUrl}
