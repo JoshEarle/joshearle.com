@@ -1,8 +1,13 @@
 import NowPlaying from "@/components/NowPlaying";
 import Navbar from "@/components/Navbar";
 import LocalTime from "@/components/LocalTime";
+import { getNowPlaying } from "@/lib/spotify";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const initialTrack = await getNowPlaying();
+
   return (
     <main className="min-h-screen px-6 py-10 md:px-12 md:py-16 relative">
       {/* Nav */}
@@ -67,7 +72,7 @@ export default function Home() {
 
         {/* Now Playing + Social Links */}
         <div className="mt-8 md:mt-16">
-          <NowPlaying />
+          <NowPlaying initialData={initialTrack} />
 
           <div className="mt-8 flex justify-center items-center gap-4 text-foreground">
             <span className="text-regular"><LocalTime /></span>
