@@ -6,13 +6,13 @@ export default function WritingsPage() {
   return (
     <main className="min-h-screen px-6 py-16 md:px-12 md:py-24 relative">
       {/* Nav */}
-      <div className="mb-16">
+      <div className="mb-10">
         <Navbar />
       </div>
 
       <div className="max-w-4xl mx-auto">
         {/* Page Title */}
-        <div className="mb-16">
+        <div className="mb-10">
           <h2 className="text-medium mb-2">writings</h2>
         </div>
 
@@ -31,7 +31,7 @@ export default function WritingsPage() {
                   {writing.title}
                 </Link>
                 <div className="flex-1 border-b border-dotted border-themed mx-4"></div>
-                <span className="text-small text-muted whitespace-nowrap flex gap-3">
+                <span className="text-regular text-muted whitespace-nowrap flex gap-3">
                   <span>{getReadingTime(writing.content)}</span>
                   <span>{writing.date}</span>
                 </span>

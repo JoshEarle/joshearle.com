@@ -20,7 +20,7 @@ export default function Navbar() {
           <Link
             key={item.href}
             href={item.href}
-            className={`text-small hover:text-foreground transition-colors ${
+            className={`text-regular hover:text-foreground transition-colors ${
               (item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)) ? "text-foreground" : ""
             }`}
           >

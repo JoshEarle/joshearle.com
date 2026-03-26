@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+const REDIRECT_URI = "http://127.0.0.1:3000/api/spotify/callback";
+
 export async function GET(request: NextRequest) {
   const code = request.nextUrl.searchParams.get("code");
   const error = request.nextUrl.searchParams.get("error");
@@ -19,7 +21,7 @@ export async function GET(request: NextRequest) {
     }
 
     const scopes = "user-read-currently-playing user-read-playback-state";
-    const redirectUri = "http://127.0.0.1:3000/api/spotify/callback";
+    const redirectUri = REDIRECT_URI;
 
     const authUrl = new URL("https://accounts.spotify.com/authorize");
     authUrl.searchParams.set("client_id", clientId);
@@ -50,7 +52,7 @@ export async function GET(request: NextRequest) {
     body: new URLSearchParams({
       grant_type: "authorization_code",
       code,
-      redirect_uri: "http://127.0.0.1:3000/api/spotify/callback",
+      redirect_uri: REDIRECT_URI,
     }),
   });
 

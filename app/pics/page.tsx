@@ -57,13 +57,13 @@ export default function PicsPage() {
   return (
     <main className="min-h-screen px-6 py-16 md:px-12 md:py-24 relative">
       {/* Nav */}
-      <div className="mb-16">
+      <div className="mb-10">
         <Navbar />
       </div>
 
       <div className="max-w-4xl mx-auto">
         {/* Page Title */}
-        <div className="mb-16">
+        <div className="mb-10">
           <h2 className="text-medium mb-2">pics</h2>
         </div>
 
@@ -86,7 +86,7 @@ export default function PicsPage() {
                 <h3 className="text-regular group-hover:text-foreground transition-colors">
                   {pic.title}
                 </h3>
-                <span className="text-small text-muted whitespace-nowrap ml-4">
+                <span className="text-regular text-muted whitespace-nowrap ml-4">
                   {pic.date}
                 </span>
               </div>
@@ -100,7 +100,7 @@ export default function PicsPage() {
             <p className="text-regular text-muted mb-4">
               No photos yet.
             </p>
-            <p className="text-small text-muted">
+            <p className="text-regular text-muted">
               Add images to <code className="bg-gray-100 dark:bg-neutral-900 px-2 py-1 rounded">/public/images/</code> and update the pics array in <code className="bg-gray-100 dark:bg-neutral-900 px-2 py-1 rounded">app/pics/page.tsx</code>
             </p>
           </div>

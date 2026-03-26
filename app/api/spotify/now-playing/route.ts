@@ -11,6 +11,7 @@ async function getAccessToken() {
 
   const response = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
+    cache: "no-store",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
       Authorization: `Basic ${Buffer.from(`${clientId}:${clientSecret}`).toString("base64")}`,
@@ -38,6 +39,7 @@ export async function GET() {
     const nowPlayingResponse = await fetch(
       "https://api.spotify.com/v1/me/player/currently-playing",
       {
+        cache: "no-store",
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
@@ -62,6 +64,8 @@ export async function GET() {
       album: data.item?.album?.name,
       albumImageUrl: data.item?.album?.images?.[0]?.url,
       songUrl: data.item?.external_urls?.spotify,
+      progressMs: data.progress_ms,
+      durationMs: data.item?.duration_ms,
     });
   } catch (error) {
     console.error("Error fetching now playing:", error);
