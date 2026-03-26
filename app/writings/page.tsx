@@ -1,6 +1,16 @@
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
 import { writings, getReadingTime } from "@/lib/writings";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "writings",
+  description: "thoughts on technology, design, agents, and building things — by josh earle",
+  openGraph: {
+    title: "writings — josh earle",
+    description: "thoughts on technology, design, agents, and building things — by josh earle",
+  },
+};
 
 export default function WritingsPage() {
   return (

@@ -2,6 +2,15 @@ import NowPlaying from "@/components/NowPlaying";
 import Navbar from "@/components/Navbar";
 import LocalTime from "@/components/LocalTime";
 import { getNowPlaying } from "@/lib/spotify";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  description: "josh earle — co-founder of outlit, based in sf. building, writing, and sharing things i find interesting.",
+  openGraph: {
+    title: "josh earle",
+    description: "josh earle — co-founder of outlit, based in sf. building, writing, and sharing things i find interesting.",
+  },
+};
 
 export const dynamic = "force-dynamic";
 
