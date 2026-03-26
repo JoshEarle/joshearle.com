@@ -11,7 +11,7 @@ export default function WritingPage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <main className="min-h-screen px-6 py-16 md:px-12 md:py-24 relative">
+    <main className="min-h-screen px-6 py-10 md:px-12 md:py-16 relative">
       {/* Nav */}
       <div className="mb-10">
         <Navbar />

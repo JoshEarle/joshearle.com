@@ -2,6 +2,11 @@
 
 import { useState, useEffect } from "react";
 
+function getInitialTheme(): "light" | "dark" {
+  if (typeof window === "undefined") return "dark";
+  return (localStorage.getItem("theme") as "light" | "dark") || "dark";
+}
+
 function applyTheme(theme: "light" | "dark") {
   if (theme === "dark") {
     document.documentElement.classList.add("dark");
@@ -11,20 +16,16 @@ function applyTheme(theme: "light" | "dark") {
 }
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [theme, setTheme] = useState<"light" | "dark">(getInitialTheme);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    const currentTheme = savedTheme || "dark";
-    setTheme(currentTheme);
-    applyTheme(currentTheme);
-  }, []);
+    applyTheme(theme);
+  }, [theme]);
 
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
-    applyTheme(newTheme);
   };
 
   return (

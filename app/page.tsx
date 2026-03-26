@@ -30,9 +30,9 @@ export default function Home() {
               rel="noopener noreferrer"
             >
               outlit
-            </a>.
+            </a>
             <br />
-            customer context for agents.
+            customer context for agents
           </p>
         </section>
 
@@ -40,7 +40,7 @@ export default function Home() {
         <section className="mb-10">
           <h2 className="text-medium mb-3">about</h2>
           <p className="text-regular leading-relaxed">
-            canadian living in san francisco.
+            based in sf, originally from canada
             <br /><br />
             writing about things i find interesting{" "}
             <a
@@ -50,16 +50,18 @@ export default function Home() {
               here
             </a>
             {" "}and building things like{" "}
+            the hardest{" "}
             <a
               href="https://www.hardestnarutoquiz.com"
               className="text-foreground underline hover:opacity-70 transition-opacity"
               target="_blank"
               rel="noopener noreferrer"
             >
-              the hardest naruto trivia quiz on the internet
-            </a>.
+              naruto trivia quiz
+            </a>
+            {" "}on the internet
             <br /><br />
-            other interests include context engineering, nuclear economics, and fantasy football.
+            other things i think about: inclusive design, nuclear economics, and fantasy football
           </p>
         </section>
 
@@ -67,9 +69,9 @@ export default function Home() {
         <div className="mt-16">
           <NowPlaying />
 
-          <div className="mt-8 flex justify-center items-center gap-4">
-            <span className="text-regular text-muted"><LocalTime /></span>
-            <span className="text-muted">·</span>
+          <div className="mt-8 flex justify-center items-center gap-4 text-muted">
+            <span className="text-regular"><LocalTime /></span>
+            <span>·</span>
             <a
               href="https://x.com/RealEarle"
               className="hover:text-foreground transition-colors"

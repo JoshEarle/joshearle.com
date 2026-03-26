@@ -25,6 +25,7 @@ function Equalizer() {
 
 export default function NowPlaying() {
   const [nowPlaying, setNowPlaying] = useState<NowPlayingData | null>(null);
+  const [lastPlayed, setLastPlayed] = useState<NowPlayingData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const fetchState = useRef({ time: 0, progressMs: 0 });
@@ -41,6 +42,11 @@ export default function NowPlaying() {
         if (prev?.title === data.title && prev?.isPlaying === data.isPlaying) return prev;
         return data;
       });
+
+      // Remember the last song that was playing
+      if (data.isPlaying && data.title) {
+        setLastPlayed(data);
+      }
 
       playbackRef.current = {
         isPlaying: data.isPlaying ?? false,
@@ -77,50 +83,59 @@ export default function NowPlaying() {
     };
   }, [fetchNowPlaying]);
 
-  if (isLoading || !nowPlaying?.isPlaying || !nowPlaying.title) {
+  const isPlaying = nowPlaying?.isPlaying && nowPlaying?.title;
+  const track = isPlaying ? nowPlaying : lastPlayed;
+
+  if (isLoading || !track?.title) {
     return null;
   }
 
   const content = (
-    <div className="flex items-center gap-4 p-4 rounded-xl border border-themed max-w-md mx-auto">
-      {nowPlaying.albumImageUrl && (
+    <div className={`flex items-center gap-4 p-4 rounded-xl border border-themed max-w-md mx-auto transition-opacity ${
+      !isPlaying ? "opacity-40" : ""
+    }`}>
+      {track.albumImageUrl && (
         <img
-          src={nowPlaying.albumImageUrl}
-          alt={nowPlaying.album || "album cover"}
-          className="w-12 h-12 rounded-lg object-cover flex-shrink-0"
+          src={track.albumImageUrl}
+          alt={track.album || "album cover"}
+          className={`w-12 h-12 rounded-lg object-cover flex-shrink-0 ${!isPlaying ? "grayscale" : ""}`}
         />
       )}
       <div className="flex-1 min-w-0">
         <div className="flex items-center justify-between gap-2">
           <div className="min-w-0">
             <p className="text-regular text-foreground truncate">
-              {nowPlaying.title}
+              {track.title}
             </p>
-            <p className="text-muted truncate" style={{ fontSize: "10pt" }}>
-              {nowPlaying.artist}
+            <p className="text-regular text-muted truncate">
+              {track.artist}
             </p>
           </div>
-          <Equalizer />
+          {isPlaying && <Equalizer />}
         </div>
         <div className="mt-2 w-full h-[3px] rounded-full" style={{ backgroundColor: "var(--border)" }}>
-          <div
-            className="h-full rounded-full transition-[width] duration-500 ease-linear"
-            style={{
-              width: `${progress * 100}%`,
-              backgroundColor: "var(--foreground)",
-            }}
-          />
+          {isPlaying && (
+            <div
+              className="h-full rounded-full transition-[width] duration-500 ease-linear"
+              style={{
+                width: `${progress * 100}%`,
+                backgroundColor: "var(--foreground)",
+              }}
+            />
+          )}
         </div>
       </div>
     </div>
   );
 
+  const label = isPlaying ? "listening to..." : "recently played";
+
   return (
     <div className="mb-10 mt-4">
-      <p className="text-regular text-muted mb-4 text-center">listening to...</p>
-      {nowPlaying.songUrl ? (
+      <p className="text-regular text-muted mb-4 text-center">{label}</p>
+      {track.songUrl ? (
         <a
-          href={nowPlaying.songUrl}
+          href={track.songUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="hover:opacity-80 transition-opacity"
