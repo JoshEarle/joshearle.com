@@ -36,7 +36,7 @@
 :root {
   --background: #ffffff;
   --foreground: #1a1a1a;
-  --body-text: #4b5563;
+  --body-text: #6b7280;
   --muted: #9ca3af;
   --border: #e5e7eb;
 }
@@ -44,8 +44,8 @@
 .dark {
   --background: #0a0a0a;
   --foreground: #e5e5e5;
-  --body-text: #a1a1aa;
-  --muted: #71717a;
+  --body-text: #71717a;
+  --muted: #52525b;
   --border: #27272a;
 }
 
