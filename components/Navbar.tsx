@@ -20,8 +20,8 @@ export default function Navbar() {
           <Link
             key={item.href}
             href={item.href}
-            className={`text-small hover:text-gray-900 dark:hover:text-white transition-colors ${
-              (item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)) ? "text-gray-900 dark:text-white" : ""
+            className={`text-small hover:text-foreground transition-colors ${
+              (item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)) ? "text-foreground" : ""
             }`}
           >
             {item.label}

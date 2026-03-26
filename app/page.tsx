@@ -3,27 +3,24 @@ import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
-    <main className="min-h-screen px-6 py-16 md:px-12 md:py-24 relative">
+    <main className="min-h-screen px-6 py-10 md:px-12 md:py-16 relative">
       {/* Nav */}
-      <div className="mb-16">
+      <div className="mb-10">
         <Navbar />
       </div>
 
       <div className="max-w-4xl mx-auto">
         {/* Name */}
-        <div className="mb-16 flex items-baseline gap-1.5">
+        <div className="mb-10 flex items-baseline gap-1.5">
           <h1 className="text-medium">josh earle</h1>
           <span className="text-small">/</span>
           <p className="text-small">co-founder, outlit</p>
         </div>
 
-        {/* Now Playing Section */}
-        <NowPlaying />
-
         {/* Currently Section */}
-        <section className="mb-16">
-          <h2 className="text-medium mb-4">currently</h2>
-          <p className="text-regular mb-6 leading-relaxed">
+        <section className="mb-10">
+          <h2 className="text-medium mb-3">currently</h2>
+          <p className="text-regular leading-relaxed">
             building{" "}
             <a
               href="https://outlit.ai/"
@@ -39,9 +36,9 @@ export default function Home() {
         </section>
 
         {/* About Section */}
-        <section className="mb-16">
-          <h2 className="text-medium mb-4">about</h2>
-          <p className="text-regular mb-6 leading-relaxed">
+        <section className="mb-10">
+          <h2 className="text-medium mb-3">about</h2>
+          <p className="text-regular leading-relaxed">
             canadian living in san francisco.
             <br /><br />
             writing about things i find interesting{" "}
@@ -65,11 +62,14 @@ export default function Home() {
           </p>
         </section>
 
+        {/* Now Playing */}
+        <NowPlaying />
+
         {/* Social Links */}
-        <div className="mt-16 flex gap-5">
+        <div className="mt-10 flex gap-5">
           <a
             href="https://x.com/RealEarle"
-            className="hover:text-gray-900 dark:hover:text-white transition-colors"
+            className="hover:text-foreground transition-colors"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="X"
@@ -80,7 +80,7 @@ export default function Home() {
           </a>
           <a
             href="https://www.linkedin.com/in/joshearle/"
-            className="hover:text-gray-900 dark:hover:text-white transition-colors"
+            className="hover:text-foreground transition-colors"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -91,7 +91,7 @@ export default function Home() {
           </a>
           <a
             href="mailto:josh@outlit.ai"
-            className="hover:text-gray-900 dark:hover:text-white transition-colors"
+            className="hover:text-foreground transition-colors"
             aria-label="Email"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

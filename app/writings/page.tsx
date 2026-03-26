@@ -26,12 +26,12 @@ export default function WritingsPage() {
               >
                 <Link
                   href={`/writings/${writing.slug}`}
-                  className="text-regular hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer"
+                  className="text-regular hover:text-foreground transition-colors cursor-pointer"
                 >
                   {writing.title}
                 </Link>
-                <div className="flex-1 border-b border-dotted border-gray-300 dark:border-gray-700 mx-4"></div>
-                <span className="text-small text-gray-600 dark:text-gray-500 whitespace-nowrap flex gap-3">
+                <div className="flex-1 border-b border-dotted border-themed mx-4"></div>
+                <span className="text-small text-muted whitespace-nowrap flex gap-3">
                   <span>{getReadingTime(writing.content)}</span>
                   <span>{writing.date}</span>
                 </span>
@@ -40,7 +40,7 @@ export default function WritingsPage() {
           </div>
         ) : (
           <div className="text-center py-16">
-            <p className="text-regular text-gray-600 dark:text-gray-400">
+            <p className="text-regular text-muted">
               coming soon
             </p>
           </div>

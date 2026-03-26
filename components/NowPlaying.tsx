@@ -48,7 +48,7 @@ export default function NowPlaying() {
   return (
     <div className="mb-16">
       <h2 className="text-medium mb-4">now playing</h2>
-      <div className="flex items-center gap-4 p-4 rounded-lg bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+      <div className="flex items-center gap-4 p-4 rounded-lg bg-gray-100 dark:bg-neutral-900 border border-themed">
         {nowPlaying.albumImageUrl && (
           <img
             src={nowPlaying.albumImageUrl}
@@ -59,7 +59,7 @@ export default function NowPlaying() {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            <p className="text-regular text-gray-600 dark:text-gray-400">live on spotify</p>
+            <p className="text-regular text-muted">live on spotify</p>
           </div>
           {nowPlaying.songUrl ? (
             <a
@@ -68,16 +68,16 @@ export default function NowPlaying() {
               rel="noopener noreferrer"
               className="block hover:underline"
             >
-              <p className="text-regular text-gray-900 dark:text-white truncate">
+              <p className="text-regular text-foreground truncate">
                 {nowPlaying.title}
               </p>
             </a>
           ) : (
-            <p className="text-regular text-gray-900 dark:text-white truncate">
+            <p className="text-regular text-foreground truncate">
               {nowPlaying.title}
             </p>
           )}
-          <p className="text-regular text-gray-600 dark:text-gray-400 truncate">
+          <p className="text-regular text-muted truncate">
             {nowPlaying.artist}
           </p>
         </div>

@@ -9,10 +9,10 @@ export default function ThemeToggle() {
     // Read from localStorage and sync component state with DOM
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
     const currentTheme = savedTheme || "dark";
-    
+
     // Sync component state with what's in localStorage
     setTheme(currentTheme);
-    
+
     // Ensure DOM matches (should already be set by script, but double-check)
     if (currentTheme === "dark") {
       document.documentElement.classList.add("dark");
@@ -45,7 +45,7 @@ export default function ThemeToggle() {
             theme === "dark" ? "translate-x-0" : "translate-x-8"
           }`}
         />
-        
+
         {/* Icons container */}
         <div className="relative flex items-center justify-between h-full px-1.5">
           {/* Sun icon - larger, on the left */}
@@ -58,7 +58,7 @@ export default function ThemeToggle() {
             <circle cx="12" cy="12" r="4" />
             <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="white" strokeWidth="2" strokeLinecap="round" fill="none" />
           </svg>
-          
+
           {/* Moon icon - smaller crescent, on the right */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -73,4 +73,3 @@ export default function ThemeToggle() {
     </button>
   );
 }
-

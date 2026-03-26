@@ -83,10 +83,10 @@ export default function PicsPage() {
                 />
               </div>
               <div className="flex items-center justify-between px-1">
-                <h3 className="text-regular group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
+                <h3 className="text-regular group-hover:text-foreground transition-colors">
                   {pic.title}
                 </h3>
-                <span className="text-small text-gray-600 dark:text-gray-500 whitespace-nowrap ml-4">
+                <span className="text-small text-muted whitespace-nowrap ml-4">
                   {pic.date}
                 </span>
               </div>
@@ -97,11 +97,11 @@ export default function PicsPage() {
         {/* Empty State */}
         {pics.length === 0 && (
           <div className="text-center py-16">
-            <p className="text-regular text-gray-600 dark:text-gray-400 mb-4">
+            <p className="text-regular text-muted mb-4">
               No photos yet.
             </p>
-            <p className="text-small text-gray-500 dark:text-gray-500">
-              Add images to <code className="bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">/public/images/</code> and update the pics array in <code className="bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded">app/pics/page.tsx</code>
+            <p className="text-small text-muted">
+              Add images to <code className="bg-gray-100 dark:bg-neutral-900 px-2 py-1 rounded">/public/images/</code> and update the pics array in <code className="bg-gray-100 dark:bg-neutral-900 px-2 py-1 rounded">app/pics/page.tsx</code>
             </p>
           </div>
         )}

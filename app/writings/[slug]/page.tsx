@@ -20,7 +20,7 @@ export default function WritingPage({ params }: { params: { slug: string } }) {
       <div className="max-w-4xl mx-auto">
         {/* Back link */}
         <div className="mb-8">
-          <Link href="/writings" className="text-small hover:text-gray-900 dark:hover:text-white transition-colors">
+          <Link href="/writings" className="text-small hover:text-foreground transition-colors">
             ← back
           </Link>
         </div>
@@ -28,7 +28,7 @@ export default function WritingPage({ params }: { params: { slug: string } }) {
         {/* Page Title */}
         <div className="mb-16">
           <h1 className="text-medium mb-2">{writing.title}</h1>
-          <p className="text-small text-gray-600 dark:text-gray-500">
+          <p className="text-small text-muted">
             {writing.date} · {getReadingTime(writing.content)}
           </p>
         </div>
