@@ -27,5 +27,5 @@ export default function LocalTime() {
 
   if (!time) return null;
 
-  return <span>San Francisco, <span style={{ fontVariantNumeric: "tabular-nums" }}>{time}</span></span>;
+  return <span>San Francisco, CA · <span style={{ fontVariantNumeric: "tabular-nums" }}>{time}</span></span>;
 }

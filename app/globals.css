@@ -68,6 +68,17 @@ h1, h2, h3, h4, h5, h6 {
   to { opacity: 1; }
 }
 
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 @keyframes eq1 {
   0%, 100% { height: 4px; }
   50% { height: 16px; }
