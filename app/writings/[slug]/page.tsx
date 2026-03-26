@@ -2,6 +2,23 @@ import Navbar from "@/components/Navbar";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { writings, getReadingTime } from "@/lib/writings";
+import type { Metadata } from "next";
+
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+  const writing = writings.find((w) => w.slug === params.slug);
+  if (!writing) {
+    return { title: "not found" };
+  }
+  return {
+    title: writing.title,
+    description: writing.description,
+    openGraph: {
+      title: `${writing.title} — josh earle`,
+      description: writing.description,
+      type: "article",
+    },
+  };
+}
 
 export default function WritingPage({ params }: { params: { slug: string } }) {
   const writing = writings.find((w) => w.slug === params.slug);

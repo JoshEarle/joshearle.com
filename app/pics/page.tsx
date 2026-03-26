@@ -1,5 +1,15 @@
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "pics",
+  description: "a collection of photos by josh earle — moments from sf, travel, and life",
+  openGraph: {
+    title: "pics — josh earle",
+    description: "a collection of photos by josh earle — moments from sf, travel, and life",
+  },
+};
 
 // HOW TO ADD PHOTOS:
 // 

@@ -5,8 +5,33 @@ import { OutlitProvider } from "@/components/OutlitProvider";
 import CommandPalette from "@/components/CommandPalette";
 
 export const metadata: Metadata = {
-  title: "josh earle",
-  description: "personal website and portfolio",
+  metadataBase: new URL("https://www.joshearle.com"),
+  title: {
+    default: "josh earle",
+    template: "%s — josh earle",
+  },
+  description: "personal site of josh earle — co-founder of outlit, writing about technology, design, and building things",
+  openGraph: {
+    title: "josh earle",
+    description: "personal site of josh earle — co-founder of outlit, writing about technology, design, and building things",
+    url: "https://www.joshearle.com",
+    siteName: "josh earle",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "josh earle",
+    description: "personal site of josh earle — co-founder of outlit, writing about technology, design, and building things",
+    images: ["/images/og-image.png"],
+  },
 };
 
 export default function RootLayout({
