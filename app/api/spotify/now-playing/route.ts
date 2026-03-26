@@ -8,7 +8,7 @@ async function getAccessToken() {
   const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
 
   if (!clientId || !clientSecret || !refreshToken) {
-    throw new Error("Spotify credentials not configured");
+    throw new Error(`Spotify credentials not configured: id=${!!clientId} secret=${!!clientSecret} token=${!!refreshToken}`);
   }
 
   const response = await fetch("https://accounts.spotify.com/api/token", {
@@ -25,7 +25,9 @@ async function getAccessToken() {
   });
 
   if (!response.ok) {
-    throw new Error("Failed to refresh token");
+    const errorBody = await response.text();
+    console.error("Spotify token error:", response.status, errorBody);
+    throw new Error(`Failed to refresh token: ${response.status} ${errorBody}`);
   }
 
   const data = await response.json();
