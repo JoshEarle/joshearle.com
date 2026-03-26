@@ -1,6 +1,7 @@
 export interface Writing {
   id: number;
   title: string;
+  description: string;
   date: string;
   slug: string;
   content: string;
@@ -10,14 +11,16 @@ export const writings: Writing[] = [
   {
     id: 1,
     title: "death to dashboards",
-    date: "MAR 16, 26",
+    description: "why the future of analytics is conversational, not visual",
+    date: "mar 16, 26",
     slug: "death-to-dashboards",
     content: "coming soon",
   },
   {
     id: 2,
     title: "the orchestration layer is the new interface",
-    date: "MAR 16, 26",
+    description: "how agent infrastructure is replacing traditional software design",
+    date: "mar 16, 26",
     slug: "the-orchestration-layer-is-the-new-interface",
     content: "coming soon",
   },

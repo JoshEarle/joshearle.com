@@ -22,25 +22,25 @@ const pics = [
     id: 1,
     title: "late night at golden gate",
     imageUrl: "/images/IMG_5379.jpg",
-    date: "DEC 15, 25",
+    date: "dec 15, 25",
   },
   {
     id: 2,
     title: "shopping at familymart in osaka",
     imageUrl: "/images/IMG_4705.jpg",
-    date: "APR 20, 23",
+    date: "apr 20, 23",
   },
   {
     id: 3,
     title: "got into yc!",
     imageUrl: "/images/L1000419.jpg",
-    date: "FEB 20, 25",
+    date: "feb 20, 25",
   },
   {
     id: 4,
     title: "conquering waterfalls in ecuador",
     imageUrl: "/images/Waterfall.jpg",
-    date: "JAN 2, 26",
+    date: "jan 2, 26",
   },
   // TO ADD MORE PHOTOS:
   // Step 1: Save your image file to: public/images/your-photo.jpg
