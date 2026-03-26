@@ -69,7 +69,7 @@ export default function Home() {
         <div className="mt-16">
           <NowPlaying />
 
-          <div className="mt-8 flex justify-center items-center gap-4 text-muted">
+          <div className="mt-8 flex justify-center items-center gap-4 text-foreground">
             <span className="text-regular"><LocalTime /></span>
             <span>·</span>
             <a
