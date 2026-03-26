@@ -71,10 +71,10 @@ export async function GET() {
       progressMs: data.progress_ms,
       durationMs: data.item?.duration_ms,
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error fetching now playing:", error);
     return NextResponse.json(
-      { error: "Failed to fetch now playing" },
+      { error: error.message || "Failed to fetch now playing" },
       { status: 500 }
     );
   }
