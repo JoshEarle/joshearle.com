@@ -1,32 +1,15 @@
-import ThemeToggle from "@/components/ThemeToggle";
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
-
-interface Writing {
-  id: number;
-  title: string;
-  date: string;
-  slug: string;
-}
-
-// This is where you'd store your writings data
-// Add more writings here as you create them
-const writings: Writing[] = [];
+import { writings, getReadingTime } from "@/lib/writings";
 
 export default function WritingsPage() {
   return (
     <main className="min-h-screen px-6 py-16 md:px-12 md:py-24 relative">
-      {/* Header: Name, Navbar, Theme Toggle - Fixed width container */}
-      <div className="max-w-4xl mx-auto mb-16">
-        <div className="flex items-center justify-between relative">
-          <h1 className="text-medium">josh earle</h1>
-          <Navbar />
-          <div className="w-16">
-            <ThemeToggle />
-          </div>
-        </div>
+      {/* Nav */}
+      <div className="mb-16">
+        <Navbar />
       </div>
-      
+
       <div className="max-w-4xl mx-auto">
         {/* Page Title */}
         <div className="mb-16">
@@ -37,7 +20,7 @@ export default function WritingsPage() {
         {writings.length > 0 ? (
           <div className="space-y-6">
             {writings.map((writing) => (
-              <article 
+              <article
                 key={writing.id}
                 className="flex items-center justify-between pb-4"
               >
@@ -48,8 +31,9 @@ export default function WritingsPage() {
                   {writing.title}
                 </Link>
                 <div className="flex-1 border-b border-dotted border-gray-300 dark:border-gray-700 mx-4"></div>
-                <span className="text-small text-gray-600 dark:text-gray-500 whitespace-nowrap">
-                  {writing.date}
+                <span className="text-small text-gray-600 dark:text-gray-500 whitespace-nowrap flex gap-3">
+                  <span>{getReadingTime(writing.content)}</span>
+                  <span>{writing.date}</span>
                 </span>
               </article>
             ))}
@@ -65,4 +49,3 @@ export default function WritingsPage() {
     </main>
   );
 }
-
