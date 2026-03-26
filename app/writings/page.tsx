@@ -12,30 +12,35 @@ export default function WritingsPage() {
 
       <div className="max-w-4xl mx-auto">
         {/* Page Title */}
-        <div className="mb-10">
-          <h2 className="text-medium mb-2">writings</h2>
+        <div className="mb-6">
+          <h2 className="text-medium">writings</h2>
         </div>
 
         {/* Writings List */}
         {writings.length > 0 ? (
-          <div className="space-y-6">
-            {writings.map((writing) => (
-              <article
+          <div>
+            {writings.map((writing, i) => (
+              <Link
                 key={writing.id}
-                className="flex items-center justify-between pb-4"
+                href={`/writings/${writing.slug}`}
+                className="block py-4 hover:opacity-70 transition-opacity cursor-pointer"
+                style={i < writings.length - 1 ? { borderBottom: "1px solid rgba(128, 128, 128, 0.15)" } : undefined}
               >
-                <Link
-                  href={`/writings/${writing.slug}`}
-                  className="text-regular hover:text-foreground transition-colors cursor-pointer"
-                >
-                  {writing.title}
-                </Link>
-                <div className="flex-1 border-b border-dotted border-themed mx-4"></div>
-                <span className="text-regular text-muted whitespace-nowrap flex gap-3">
-                  <span>{getReadingTime(writing.content)}</span>
-                  <span>{writing.date}</span>
-                </span>
-              </article>
+                <div className="flex justify-between gap-4">
+                  <div>
+                    <p className="text-regular text-foreground">
+                      {writing.title}
+                    </p>
+                    <p className="text-regular text-muted mt-1">
+                      {writing.description}
+                    </p>
+                  </div>
+                  <div className="text-regular text-muted whitespace-nowrap text-right flex-shrink-0">
+                    <p>{writing.date}</p>
+                    <p className="mt-1" style={{ fontSize: "10pt" }}>{getReadingTime(writing.content)}</p>
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
         ) : (
