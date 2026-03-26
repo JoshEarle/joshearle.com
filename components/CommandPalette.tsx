@@ -95,7 +95,7 @@ export default function CommandPalette() {
         />
         <ul className="max-h-64 overflow-y-auto py-2">
           {filtered.length === 0 && (
-            <li className="px-4 py-3 text-sm text-gray-500">no results</li>
+            <li className="px-4 py-3 text-sm text-gray-500 dark:text-gray-400">no results</li>
           )}
           {filtered.map((cmd, i) => (
             <li

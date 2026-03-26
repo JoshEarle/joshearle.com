@@ -36,13 +36,17 @@
 :root {
   --background: #ffffff;
   --foreground: #1a1a1a;
-  --body-text: #4b5563; /* gray-600 */
+  --body-text: #4b5563;
+  --muted: #9ca3af;
+  --border: #e5e7eb;
 }
 
 .dark {
   --background: #0a0a0a;
   --foreground: #e5e5e5;
-  --body-text: #9ca3af; /* gray-400 */
+  --body-text: #a1a1aa;
+  --muted: #71717a;
+  --border: #27272a;
 }
 
 body {
@@ -64,8 +68,23 @@ h1, h2, h3, h4, h5, h6 {
   to { opacity: 1; }
 }
 
+@keyframes eq1 {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+
+@keyframes eq2 {
+  0%, 100% { height: 12px; }
+  50% { height: 4px; }
+}
+
+@keyframes eq3 {
+  0%, 100% { height: 8px; }
+  50% { height: 16px; }
+}
+
 main {
-  animation: fadeIn 0.5s ease-out;
+  animation: fadeIn 0.2s ease-out;
 }
 
 @layer utilities {
@@ -84,13 +103,5 @@ main {
     font-weight: 400;
   }
   
-  .text-small {
-    font-size: 10pt;
-    font-weight: 400;
-  }
-
-  .text-foreground {
-    color: var(--foreground);
-  }
 }
 

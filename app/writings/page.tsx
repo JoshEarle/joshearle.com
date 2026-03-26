@@ -4,15 +4,15 @@ import { writings, getReadingTime } from "@/lib/writings";
 
 export default function WritingsPage() {
   return (
-    <main className="min-h-screen px-6 py-16 md:px-12 md:py-24 relative">
+    <main className="min-h-screen px-6 py-10 md:px-12 md:py-16 relative">
       {/* Nav */}
-      <div className="mb-16">
+      <div className="mb-10">
         <Navbar />
       </div>
 
       <div className="max-w-4xl mx-auto">
         {/* Page Title */}
-        <div className="mb-16">
+        <div className="mb-10">
           <h2 className="text-medium mb-2">writings</h2>
         </div>
 
@@ -26,12 +26,12 @@ export default function WritingsPage() {
               >
                 <Link
                   href={`/writings/${writing.slug}`}
-                  className="text-regular hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer"
+                  className="text-regular hover:text-foreground transition-colors cursor-pointer"
                 >
                   {writing.title}
                 </Link>
-                <div className="flex-1 border-b border-dotted border-gray-300 dark:border-gray-700 mx-4"></div>
-                <span className="text-small text-gray-600 dark:text-gray-500 whitespace-nowrap flex gap-3">
+                <div className="flex-1 border-b border-dotted border-themed mx-4"></div>
+                <span className="text-regular text-muted whitespace-nowrap flex gap-3">
                   <span>{getReadingTime(writing.content)}</span>
                   <span>{writing.date}</span>
                 </span>
@@ -40,7 +40,7 @@ export default function WritingsPage() {
           </div>
         ) : (
           <div className="text-center py-16">
-            <p className="text-regular text-gray-600 dark:text-gray-400">
+            <p className="text-regular text-muted">
               coming soon
             </p>
           </div>

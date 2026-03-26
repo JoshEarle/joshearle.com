@@ -12,14 +12,14 @@ export const writings: Writing[] = [
     title: "death to dashboards",
     date: "MAR 16, 26",
     slug: "death-to-dashboards",
-    content: "coming soon.",
+    content: "coming soon",
   },
   {
     id: 2,
     title: "the orchestration layer is the new interface",
     date: "MAR 16, 26",
     slug: "the-orchestration-layer-is-the-new-interface",
-    content: "coming soon.",
+    content: "coming soon",
   },
 ];
 
