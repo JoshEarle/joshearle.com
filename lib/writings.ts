@@ -9,14 +9,6 @@ export interface Writing {
 
 export const writings: Writing[] = [
   {
-    id: 1,
-    title: "death to dashboards",
-    description: "why the future of analytics is conversational, not visual",
-    date: "mar 16, 26",
-    slug: "death-to-dashboards",
-    content: "coming soon",
-  },
-  {
     id: 2,
     title: "the orchestration layer is the new interface",
     description: "how agent infrastructure is replacing traditional software design",
