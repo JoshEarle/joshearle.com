@@ -49,6 +49,10 @@
   --border: #27272a;
 }
 
+html {
+  background: var(--background);
+}
+
 body {
   color: var(--body-text);
   background: var(--background);
