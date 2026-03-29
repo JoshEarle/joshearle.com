@@ -33,15 +33,15 @@ export default function WritingsPage() {
               <Link
                 key={writing.id}
                 href={`/writings/${writing.slug}`}
-                className="block py-4 hover:opacity-70 transition-opacity cursor-pointer"
+                className="block py-4 cursor-pointer group"
                 style={i < writings.length - 1 ? { borderBottom: "1px solid rgba(128, 128, 128, 0.15)" } : undefined}
               >
                 <div className="flex justify-between gap-4">
                   <div>
-                    <p className="text-regular text-foreground">
+                    <p className="text-regular text-foreground group-hover:opacity-70 transition-opacity">
                       {writing.title}
                     </p>
-                    <p className="text-regular text-muted mt-1">
+                    <p className="text-regular text-muted mt-1 group-hover:opacity-70 transition-opacity">
                       {writing.description}
                     </p>
                   </div>
