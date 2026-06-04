@@ -87,7 +87,7 @@ export default async function Home() {
             <span className="text-regular"><LocalTime /></span>
             <span>·</span>
             <a
-              href="https://x.com/RealEarle"
+              href="https://x.com/JoshEarle"
               className="hover:text-foreground transition-colors"
               target="_blank"
               rel="noopener noreferrer"
