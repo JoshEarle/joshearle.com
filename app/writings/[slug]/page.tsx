@@ -4,6 +4,34 @@ import { notFound } from "next/navigation";
 import { writings, getReadingTime } from "@/lib/writings";
 import type { Metadata } from "next";
 
+function renderWritingContent(content: string) {
+  return content.split("\n").map((line, index) => {
+    const text = line.trim();
+
+    if (!text) {
+      return null;
+    }
+
+    if (text === "---") {
+      return <hr key={index} className="my-10 border-themed" />;
+    }
+
+    if (text.startsWith("## ")) {
+      return (
+        <h2 key={index} className="text-medium mt-10 mb-4">
+          {text.replace(/^##\s+/, "")}
+        </h2>
+      );
+    }
+
+    return (
+      <p key={index} className="text-regular leading-relaxed mb-5">
+        {text}
+      </p>
+    );
+  });
+}
+
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const writing = writings.find((w) => w.slug === params.slug);
   if (!writing) {
@@ -52,9 +80,7 @@ export default function WritingPage({ params }: { params: { slug: string } }) {
 
         {/* Content */}
         <article className="prose prose-gray dark:prose-invert max-w-none">
-          <div className="text-regular whitespace-pre-line leading-relaxed">
-            {writing.content}
-          </div>
+          {renderWritingContent(writing.content)}
         </article>
       </div>
     </main>
