@@ -41,9 +41,6 @@ export default function WritingsPage() {
                     <p className="text-regular text-foreground group-hover:opacity-70 transition-opacity">
                       {writing.title}
                     </p>
-                    <p className="text-regular text-muted mt-1 group-hover:opacity-70 transition-opacity">
-                      {writing.description}
-                    </p>
                   </div>
                   <div className="text-regular text-muted whitespace-nowrap text-right flex-shrink-0">
                     <p>{writing.date}</p>
