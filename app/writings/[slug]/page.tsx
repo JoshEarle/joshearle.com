@@ -25,7 +25,7 @@ function renderWritingContent(content: string) {
     }
 
     return (
-      <p key={index} className="text-regular text-[#2a2a2a] dark:text-white leading-relaxed mb-5">
+      <p key={index} className="text-regular text-[#2a2a2a] dark:text-[#F0F0F0] leading-relaxed mb-5">
         {text}
       </p>
     );
