@@ -3,13 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { writings, getReadingTime } from "@/lib/writings";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-});
 
 function renderWritingContent(content: string) {
   return content.split("\n").map((line, index) => {
@@ -86,7 +79,7 @@ export default function WritingPage({ params }: { params: { slug: string } }) {
         </div>
 
         {/* Content */}
-        <article className={`${inter.className} prose prose-gray dark:prose-invert max-w-none`}>
+        <article className="prose prose-gray dark:prose-invert max-w-none">
           {renderWritingContent(writing.content)}
         </article>
       </div>
