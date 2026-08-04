@@ -16,11 +16,10 @@ const config: Config = {
         themed: "var(--border)",
       },
       fontFamily: {
-        sans: ['Aeonik', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        sans: ['Miso', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
       },
     },
   },
   plugins: [],
 };
 export default config;
-
