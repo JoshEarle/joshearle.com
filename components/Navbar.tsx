@@ -10,7 +10,6 @@ export default function Navbar() {
   const navItems = [
     { href: "/", label: "home" },
     { href: "/writings", label: "writings" },
-    { href: "/pics", label: "pics" },
   ];
 
   return (
@@ -32,4 +31,3 @@ export default function Navbar() {
     </nav>
   );
 }
-

@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 const commands = [
   { label: "home", href: "/" },
   { label: "writings", href: "/writings" },
-  { label: "pics", href: "/pics" },
   { label: "x / twitter", href: "https://x.com/JoshEarle", external: true },
   { label: "linkedin", href: "https://www.linkedin.com/in/joshearle/", external: true },
   { label: "email", href: "mailto:josh@outlit.ai", external: true },
