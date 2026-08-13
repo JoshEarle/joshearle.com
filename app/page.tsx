@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "josh earle",
     description: "josh earle — co-founder of outlit, based in sf. building, writing, and sharing things i find interesting.",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1080,
+        height: 988,
+      },
+    ],
   },
 };
 
