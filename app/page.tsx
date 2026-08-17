@@ -1,14 +1,14 @@
 import NowPlaying from "@/components/NowPlaying";
-import Navbar from "@/components/Navbar";
 import LocalTime from "@/components/LocalTime";
+import LinkPreview from "@/components/LinkPreview";
 import { getNowPlaying } from "@/lib/spotify";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  description: "josh earle — co-founder of outlit, based in sf. building, writing, and sharing things i find interesting.",
+  description: "josh earle — co-founder of outlit, from canada and building in sf. writing and sharing things i find interesting.",
   openGraph: {
     title: "josh earle",
-    description: "josh earle — co-founder of outlit, based in sf. building, writing, and sharing things i find interesting.",
+    description: "josh earle — co-founder of outlit, from canada and building in sf. writing and sharing things i find interesting.",
     images: [
       {
         url: "/images/og-image.png",
@@ -25,13 +25,8 @@ export default async function Home() {
   const initialTrack = await getNowPlaying();
 
   return (
-    <main className="min-h-screen px-6 py-10 md:px-12 md:py-16 relative">
-      {/* Nav */}
-      <div className="mb-10">
-        <Navbar />
-      </div>
-
-      <div className="max-w-4xl mx-auto">
+    <>
+      <main className="max-w-4xl mx-auto">
         {/* Name */}
         <div className="mb-6 md:mb-10 flex items-baseline gap-1.5">
           <h1 className="text-medium">josh earle</h1>
@@ -44,14 +39,12 @@ export default async function Home() {
           <h2 className="text-medium mb-3">currently</h2>
           <p className="text-regular leading-relaxed">
             building{" "}
-            <a
+            <LinkPreview
               href="https://outlit.ai/"
-              className="text-foreground underline hover:opacity-70 transition-opacity"
-              target="_blank"
-              rel="noopener noreferrer"
+              previewSrc="/images/outlit-preview.webp"
             >
               outlit
-            </a>
+            </LinkPreview>
             <br />
             customer context for agents
           </p>
@@ -61,7 +54,7 @@ export default async function Home() {
         <section className="mb-6 md:mb-10">
           <h2 className="text-medium mb-3">about</h2>
           <p className="text-regular leading-relaxed">
-            based in sf, originally from canada
+            from canada but building in sf
             <br /><br />
             writing about things i find interesting{" "}
             <a
@@ -72,17 +65,16 @@ export default async function Home() {
             </a>
             {" "}and building things like{" "}
             the hardest{" "}
-            <a
+            <LinkPreview
               href="https://www.hardestnarutoquiz.com"
-              className="text-foreground underline hover:opacity-70 transition-opacity"
-              target="_blank"
-              rel="noopener noreferrer"
+              previewSrc="/images/naruto-quiz-preview.webp"
+              storm
             >
               naruto trivia quiz
-            </a>
+            </LinkPreview>
             {" "}on the internet
             <br /><br />
-            other things i think about: inclusive design, nuclear economics, and fantasy football
+            other things i think about: the next design language, nuclear economics, and fantasy football
           </p>
         </section>
 
@@ -98,8 +90,8 @@ export default async function Home() {
               className="hover:text-foreground transition-colors"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="X"
-            >
+            aria-label="X"
+          >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>
@@ -116,6 +108,19 @@ export default async function Home() {
               </svg>
             </a>
             <a
+              href="https://joshearle.substack.com/"
+              className="hover:text-foreground transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            aria-label="Substack"
+          >
+              <svg width="18" height="18" viewBox="6.5 5.8 11 12.2" fill="currentColor">
+                <rect x="7.47" y="6.61" width="9.06" height="1.28" rx="0.12" />
+                <rect x="7.47" y="8.96" width="9.06" height="1.28" rx="0.12" />
+                <path d="M7.47 11.31h9.06v5.82c0 .31-.35.49-.6.31L12 14.72l-3.93 2.72a.38.38 0 0 1-.6-.31v-5.82Z" />
+              </svg>
+            </a>
+            <a
               href="mailto:josh@outlit.ai"
               className="hover:text-foreground transition-colors"
               aria-label="Email"
@@ -127,7 +132,7 @@ export default async function Home() {
             </a>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 }

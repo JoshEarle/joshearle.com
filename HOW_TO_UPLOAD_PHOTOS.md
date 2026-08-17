@@ -105,3 +105,6 @@ If you uploaded a file called `sunset.jpg`:
 - **Naming**: Use lowercase, no spaces (use dashes: `my-photo.jpg`)
 
 
+
+
+

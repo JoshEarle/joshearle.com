@@ -13,7 +13,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="flex items-center justify-between max-w-4xl mx-auto">
+    <nav className="site-nav flex items-center justify-between max-w-4xl mx-auto">
       <div className="flex gap-6">
         {navItems.map((item) => (
           <Link

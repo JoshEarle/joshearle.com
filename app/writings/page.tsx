@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import Link from "next/link";
 import { writings, getReadingTime } from "@/lib/writings";
 import type { Metadata } from "next";
@@ -14,13 +13,7 @@ export const metadata: Metadata = {
 
 export default function WritingsPage() {
   return (
-    <main className="min-h-screen px-6 py-10 md:px-12 md:py-16 relative">
-      {/* Nav */}
-      <div className="mb-10">
-        <Navbar />
-      </div>
-
-      <div className="max-w-4xl mx-auto">
+    <main className="writings-page max-w-4xl mx-auto">
         {/* Page Title */}
         <div className="mb-6">
           <h2 className="text-medium">writings</h2>
@@ -28,13 +21,12 @@ export default function WritingsPage() {
 
         {/* Writings List */}
         {writings.length > 0 ? (
-          <div>
-            {writings.map((writing, i) => (
+          <div className="writings-list">
+            {writings.map((writing) => (
               <Link
                 key={writing.id}
                 href={`/writings/${writing.slug}`}
-                className="block py-4 cursor-pointer group"
-                style={i < writings.length - 1 ? { borderBottom: "1px solid rgba(128, 128, 128, 0.15)" } : undefined}
+                className="writing-entry block py-4 cursor-pointer group"
               >
                 <div className="flex justify-between gap-4">
                   <div>
@@ -57,7 +49,7 @@ export default function WritingsPage() {
             </p>
           </div>
         )}
-      </div>
+
     </main>
   );
 }

@@ -8,6 +8,7 @@ const commands = [
   { label: "writings", href: "/writings" },
   { label: "x / twitter", href: "https://x.com/JoshEarle", external: true },
   { label: "linkedin", href: "https://www.linkedin.com/in/joshearle/", external: true },
+  { label: "substack", href: "https://joshearle.substack.com/", external: true },
   { label: "email", href: "mailto:josh@outlit.ai", external: true },
   { label: "outlit", href: "https://outlit.ai/", external: true },
 ];

@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { writings, getReadingTime } from "@/lib/writings";
@@ -18,14 +17,20 @@ function renderWritingContent(content: string) {
 
     if (text.startsWith("## ")) {
       return (
-        <h2 key={index} className="text-medium mt-10 mb-4">
+        <h2
+          key={index}
+          className="text-medium mt-10 mb-4"
+        >
           {text.replace(/^##\s+/, "")}
         </h2>
       );
     }
 
     return (
-      <p key={index} className="text-regular text-[#2a2a2a] dark:text-[#F0F0F0] leading-relaxed mb-5">
+      <p
+        key={index}
+        className="text-regular text-[#2a2a2a] dark:text-[#F0F0F0] leading-relaxed mb-5"
+      >
         {text}
       </p>
     );
@@ -56,22 +61,16 @@ export default function WritingPage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <main className="min-h-screen px-6 py-10 md:px-12 md:py-16 relative">
-      {/* Nav */}
-      <div className="mb-10">
-        <Navbar />
-      </div>
-
-      <div className="max-w-4xl mx-auto">
+    <main className="writing-article max-w-4xl mx-auto">
         {/* Back link */}
-        <div className="mb-8">
+        <div className="writing-article__back mb-8">
           <Link href="/writings" className="text-regular hover:text-foreground transition-colors">
             ← back
           </Link>
         </div>
 
         {/* Page Title */}
-        <div className="mb-10">
+        <div className="writing-article__header mb-10">
           <h1 className="text-medium mb-2">{writing.title}</h1>
           <p className="text-regular text-muted">
             {writing.date} · {getReadingTime(writing.content)}
@@ -79,10 +78,9 @@ export default function WritingPage({ params }: { params: { slug: string } }) {
         </div>
 
         {/* Content */}
-        <article className="prose prose-gray dark:prose-invert max-w-none">
+        <article className="writing-article__body prose prose-gray dark:prose-invert max-w-none">
           {renderWritingContent(writing.content)}
         </article>
-      </div>
     </main>
   );
 }

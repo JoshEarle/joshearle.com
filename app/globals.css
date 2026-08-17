@@ -53,6 +53,37 @@ html {
   background: var(--background);
 }
 
+/* Painted before React hydrates so the homepage never flashes underneath the intro. */
+html[data-site-intro="show"] body {
+  overflow: hidden;
+}
+
+html[data-site-intro="show"] body::before,
+html[data-site-intro="show"] body::after {
+  position: fixed;
+  z-index: 2147483646;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+}
+
+html[data-site-intro="show"] body::before {
+  background: #000;
+}
+
+html[data-site-intro="show"] body::after {
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, .58);
+  background: transparent;
+  content: "touch to start";
+  font-family: 'Aeonik', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
 body {
   color: var(--body-text);
   background: var(--background);
@@ -101,21 +132,333 @@ h1, h2, h3, h4, h5, h6 {
 main {
 }
 
+/* Route changes settle into place without interrupting the site's quiet rhythm. */
+.route-transition {
+  animation: routeEnter 620ms cubic-bezier(.22, 1, .36, 1) both;
+  will-change: opacity;
+}
+
+@keyframes routeEnter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.writing-entry {
+  border-bottom: 1px solid rgba(128, 128, 128, .15);
+}
+
+.writing-entry:last-child {
+  border-bottom: 0;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-  
+
   /* Custom font sizes: Titles 14pt, Body 12pt, Links 10pt */
   .text-medium {
     font-size: 14pt;
     font-weight: 500;
   }
-  
+
   .text-regular {
     font-size: 12pt;
     font-weight: 400;
   }
-  
 }
 
+/* SNES-era boot intro. The 164×144 canvas is deliberately scaled as pixels. */
+.site-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background: #000;
+  cursor: pointer;
+}
+
+.site-intro--leaving {
+  pointer-events: none;
+  animation: introReveal 160ms linear forwards;
+}
+
+.site-intro__canvas {
+  display: block;
+  width: min(100vw, calc(100vh * 1.1389));
+  height: auto;
+  opacity: 0;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.site-intro--running .site-intro__canvas {
+  animation: introLogoOriginal 5666ms linear both;
+}
+
+.site-intro__start {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  border: 0;
+  outline: 0;
+  color: rgba(255, 255, 255, .58);
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Aeonik', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.site-intro__start:focus-visible {
+  box-shadow: inset 0 0 0 1px rgba(255, 225, 38, .5);
+}
+
+@keyframes introLogoOriginal {
+  0%,
+  22.3% {
+    opacity: 0;
+    filter: brightness(.72);
+  }
+
+  23.5% {
+    opacity: .06;
+    filter: brightness(.76);
+  }
+
+  26% {
+    opacity: .31;
+    filter: brightness(.82);
+  }
+
+  28.5% {
+    opacity: .69;
+    filter: brightness(.91);
+  }
+
+  30.6%,
+  41.5% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+
+  42.1% {
+    opacity: 1;
+    filter: brightness(1.08);
+  }
+
+  42.8% {
+    opacity: 1;
+    filter: brightness(1.34);
+  }
+
+  43.6%,
+  80.5% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+
+  82.3% {
+    opacity: .71;
+    filter: brightness(.92);
+  }
+
+  85.5% {
+    opacity: .27;
+    filter: brightness(.8);
+  }
+
+  89.5%,
+  100% {
+    opacity: 0;
+    filter: brightness(.7);
+  }
+}
+
+@keyframes introReveal {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-intro--running .site-intro__canvas {
+    animation-name: introLogoReduced;
+  }
+}
+
+@keyframes introLogoReduced {
+  0%, 20% { opacity: 0; }
+  25%, 80% { opacity: 1; }
+  90%, 100% { opacity: 0; }
+}
+
+/* A compact portal into linked side projects. */
+.link-preview {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+
+.link-preview__anchor {
+  position: relative;
+  z-index: 1;
+}
+
+.link-preview__portal {
+  position: absolute;
+  z-index: 20;
+  left: 50%;
+  bottom: calc(100% + 12px);
+  display: block;
+  width: min(278px, calc(100vw - 40px));
+  visibility: hidden;
+  filter: blur(7px) brightness(1.25);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 12px) scale(.76) perspective(650px) rotateX(-9deg);
+  transform-origin: 50% 100%;
+  transition:
+    opacity 150ms ease,
+    filter 300ms ease,
+    transform 360ms cubic-bezier(.16, 1.22, .32, 1),
+    visibility 0s linear 360ms;
+}
+
+.link-preview:hover .link-preview__portal,
+.link-preview:focus-within .link-preview__portal {
+  visibility: visible;
+  filter: blur(0) brightness(1);
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1) perspective(650px) rotateX(0);
+  transition-delay: 55ms, 55ms, 55ms, 0s;
+}
+
+.link-preview__frame {
+  position: relative;
+  z-index: 1;
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(183, 198, 255, .2);
+  border-radius: 16px;
+  background: #07080b;
+  box-shadow:
+    0 0 18px rgba(94, 116, 218, .12),
+    0 18px 42px rgba(0, 0, 0, .46);
+}
+
+.link-preview__screen {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 1237 / 895;
+  background: #dce9fb;
+}
+
+.link-preview__screen::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(110deg, rgba(255, 255, 255, .16), transparent 24%),
+    repeating-linear-gradient(0deg, rgba(5, 10, 25, .025) 0 1px, transparent 1px 3px);
+  content: "";
+  pointer-events: none;
+}
+
+.link-preview__screen > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.012);
+  transition:
+    filter 500ms ease,
+    transform 900ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.link-preview__vortex {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  -webkit-mask-image: radial-gradient(
+    ellipse 64% 62% at center,
+    transparent 0 52%,
+    rgba(0, 0, 0, .42) 70%,
+    #000 88%
+  );
+  mask-image: radial-gradient(
+    ellipse 64% 62% at center,
+    transparent 0 52%,
+    rgba(0, 0, 0, .42) 70%,
+    #000 88%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(.92);
+  transition:
+    opacity 420ms ease,
+    transform 620ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.link-preview__vortex img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter:
+    contrast(1.12)
+    brightness(1.02)
+    drop-shadow(0 0 5px rgba(190, 207, 224, .28));
+  animation: linkPortalCloudDrift 2.35s ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+
+.link-preview:hover .link-preview__vortex,
+.link-preview:focus-within .link-preview__vortex {
+  opacity: .58;
+  transform: scale(1);
+}
+
+.link-preview:hover .link-preview__vortex img,
+.link-preview:focus-within .link-preview__vortex img {
+  animation-play-state: running;
+}
+
+.link-preview:hover .link-preview__screen > img,
+.link-preview:focus-within .link-preview__screen > img {
+  transform: scale(1.035);
+}
+
+@keyframes linkPortalCloudDrift {
+  from { transform: scale(1.08) rotate(-4deg) translate3d(-.5%, .25%, 0); }
+  to { transform: scale(1.14) rotate(5deg) translate3d(.5%, -.25%, 0); }
+}
+
+@media (max-width: 640px), (hover: none) {
+  .link-preview__portal {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-transition,
+  .link-preview__portal,
+  .link-preview__vortex,
+  .link-preview__vortex img,
+  .link-preview__screen > img {
+    animation: none;
+    transition: none;
+  }
+}

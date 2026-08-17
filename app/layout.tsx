@@ -3,6 +3,8 @@ import "./globals.css";
 import { PostHogProvider } from "@/components/PostHogProvider";
 import { OutlitProvider } from "@/components/OutlitProvider";
 import CommandPalette from "@/components/CommandPalette";
+import Navbar from "@/components/Navbar";
+import SiteIntro from "@/components/SiteIntro";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.joshearle.com"),
@@ -46,28 +48,41 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
+                document.documentElement.style.visibility = 'hidden';
+
+                var showIntro = window.location.pathname === '/';
                 try {
-                  document.documentElement.style.visibility = 'hidden';
+                  showIntro = showIntro && sessionStorage.getItem('josh-site-intro-seen-v8') !== 'true';
+                } catch (e) {}
+
+                document.documentElement.dataset.siteIntro = showIntro ? 'show' : 'hide';
+
+                try {
                   const theme = localStorage.getItem('theme');
                   if (theme === 'light') {
                     document.documentElement.classList.remove('dark');
                   } else {
                     document.documentElement.classList.add('dark');
                   }
-                  document.documentElement.style.visibility = '';
-                } catch (e) {
-                  document.documentElement.style.visibility = '';
-                }
+                } catch (e) {}
+
+                document.documentElement.style.visibility = '';
               })();
             `,
           }}
         />
       </head>
       <body>
+        <SiteIntro />
         <PostHogProvider>
           <OutlitProvider>
             <CommandPalette />
-            {children}
+            <div className="min-h-screen px-6 py-10 md:px-12 md:py-16 relative">
+              <div className="mb-10">
+                <Navbar />
+              </div>
+              {children}
+            </div>
           </OutlitProvider>
         </PostHogProvider>
       </body>
